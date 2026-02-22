@@ -6,6 +6,8 @@
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
 // @icon         https://www.dofuspourlesnoobs.com/favicon.ico
+// @updateURL    https://github.com/BurN-30/dpln-dark-mode/raw/main/dpln-dark-mode.user.js
+// @downloadURL  https://github.com/BurN-30/dpln-dark-mode/raw/main/dpln-dark-mode.user.js
 // @grant        GM_addStyle
 // ==/UserScript==
 
