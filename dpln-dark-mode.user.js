@@ -5,6 +5,7 @@
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
+// @icon         https://www.dofuspourlesnoobs.com/favicon.ico
 // @grant        GM_addStyle
 // ==/UserScript==
 
