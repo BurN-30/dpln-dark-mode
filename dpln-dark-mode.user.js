@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      8.2
+// @version      8.3
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -67,6 +67,7 @@
         }
         body.dpln-dark a:hover { color: #f09070 !important; }
 
+        body.dpln-dark #header-wrap,
         body.dpln-dark #nav-wrap {
             background-color: var(--bg-sec) !important;
             border-bottom: 1px solid var(--border-color) !important;
