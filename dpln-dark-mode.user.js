@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      9.0
+// @version      10.0
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -25,12 +25,12 @@
         }
 
         body.dpln-dark,
+        body.dpln-dark.wsite-background,
+        body.dpln-dark > .wsite-background,
         body.dpln-dark #main-wrap,
         body.dpln-dark #wsite-page-wrapper,
-        body.dpln-dark .wsite-background,
         body.dpln-dark .wsite-custom-background,
         body.dpln-dark #wsite-content,
-        body.dpln-dark #header-wrap,
         body.dpln-dark .wsite-not-footer,
         body.dpln-dark .wsite-elements,
         body.dpln-dark .wsite-section-wrap,
@@ -72,7 +72,10 @@
         }
         body.dpln-dark a:hover { color: #f09070 !important; }
 
-        body.dpln-dark #header-wrap,
+        body.dpln-dark #header-wrap {
+            background-color: transparent !important;
+            background-image: none !important;
+        }
         body.dpln-dark #nav-wrap {
             background-color: var(--bg-sec) !important;
             border-bottom: 1px solid var(--border-color) !important;
@@ -90,6 +93,16 @@
         body.dpln-dark .wsite-menu-subitem:hover {
             background: #353640 !important;
             color: #fff !important;
+        }
+
+        body.dpln-dark .wsite-menu-default a:hover,
+        body.dpln-dark .wsite-menu-item a:hover {
+            color: var(--text-accent) !important;
+        }
+        body.dpln-dark .wsite-menu-item-wrap.wsite-nav-current > a,
+        body.dpln-dark .wsite-menu-item.active > a {
+            color: var(--text-accent) !important;
+            border-bottom: 2px solid var(--text-accent) !important;
         }
 
         body.dpln-dark .wsite-multicol,
@@ -122,6 +135,17 @@
         }
 
         body.dpln-dark .wcustomhtml {
+            color: var(--text-main) !important;
+        }
+
+        body.dpln-dark .dungeon-article {
+            background: var(--bg-ter) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+        }
+        body.dpln-dark .dungeon-article:hover {
+            box-shadow: 0 8px 22px rgba(0,0,0,0.5) !important;
+        }
+        body.dpln-dark .dj-article-tt {
             color: var(--text-main) !important;
         }
 
