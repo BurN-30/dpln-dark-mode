@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      15.5
+// @version      16.0
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -105,32 +105,8 @@
             color: #8ad4f0 !important;
         }
 
-        body.dpln-dark font[color="#ff0000"],
-        body.dpln-dark font[color="#f00"],
-        body.dpln-dark font[color="#fd0000"] {
-            color: #ff6b6b !important;
-        }
-        body.dpln-dark font[color="#3a96b8"],
-        body.dpln-dark font[color="#3387a2"] {
-            color: #5bbce0 !important;
-        }
-        body.dpln-dark font[color="#5fa233"] {
-            color: #7cc956 !important;
-        }
-        body.dpln-dark font[color="#5848b7"] {
-            color: #8a7ef0 !important;
-        }
-        body.dpln-dark font[color="#a85f2e"] {
-            color: #d4894e !important;
-        }
-        body.dpln-dark font[color="#3f3f3f"] {
-            color: #a0a0a0 !important;
-        }
-        body.dpln-dark font[color="#508d24"] {
-            color: #7cc956 !important;
-        }
-        body.dpln-dark font[color="#a82e2e"] {
-            color: #ff6b6b !important;
+        body.dpln-dark font[color] {
+            color: var(--font-color-remap) !important;
         }
 
         body.dpln-dark #nav-wrap {
@@ -280,6 +256,44 @@
     toggleBtn.innerHTML = isDark ? iconSun : iconMoon;
     body.appendChild(toggleBtn);
 
+    function remapFontColors() {
+        if (!body.classList.contains('dpln-dark')) return;
+        document.querySelectorAll('font[color]').forEach(el => {
+            const raw = el.getAttribute('color').trim().toLowerCase();
+            let r, g, b;
+            if (/^#[0-9a-f]{3}$/i.test(raw)) {
+                r = parseInt(raw[1]+raw[1], 16);
+                g = parseInt(raw[2]+raw[2], 16);
+                b = parseInt(raw[3]+raw[3], 16);
+            } else if (/^#[0-9a-f]{6,}$/i.test(raw)) {
+                r = parseInt(raw.slice(1,3), 16);
+                g = parseInt(raw.slice(3,5), 16);
+                b = parseInt(raw.slice(5,7), 16);
+            } else {
+                const named = {red:[255,0,0],blue:[0,0,255],green:[0,128,0],black:[0,0,0],gray:[128,128,128],brown:[165,42,42],yellow:[255,255,0],white:[255,255,255]};
+                const n = named[raw];
+                if (!n) return;
+                r = n[0]; g = n[1]; b = n[2];
+            }
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            const l = (max + min) / 2 / 255;
+            if (l < 0.45) {
+                const boost = 0.65 / Math.max(l, 0.01);
+                r = Math.min(255, Math.round(r * boost));
+                g = Math.min(255, Math.round(g * boost));
+                b = Math.min(255, Math.round(b * boost));
+            } else if (l < 0.6) {
+                r = Math.min(255, r + 60);
+                g = Math.min(255, g + 60);
+                b = Math.min(255, b + 60);
+            }
+            const hex = '#' + [r,g,b].map(c => c.toString(16).padStart(2,'0')).join('');
+            el.style.setProperty('--font-color-remap', hex);
+        });
+    }
+    remapFontColors();
+
     let rotation = 0;
     toggleBtn.addEventListener('click', () => {
         body.classList.toggle('dpln-dark');
@@ -294,5 +308,6 @@
             svg.style.transform = `rotate(${rotation}deg)`;
             svg.style.transition = 'transform 0.4s ease';
         }
+        remapFontColors();
     });
 })();
