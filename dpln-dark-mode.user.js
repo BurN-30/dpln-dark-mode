@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      15.0
+// @version      15.1
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -96,6 +96,15 @@
         body.dpln-dark .wsite-footer .paragraph a:hover,
         body.dpln-dark .wsite-not-footer .wsite-multicol a:hover {
             color: #f09070 !important;
+        }
+
+        /* === COORDS CLIQUABLES === */
+        body.dpln-dark .fast-travel-coord {
+            color: #5bbce0 !important;
+            cursor: pointer;
+        }
+        body.dpln-dark .fast-travel-coord:hover {
+            color: #8ad4f0 !important;
         }
 
         /* === FONT COLOR (pages quêtes) === */
