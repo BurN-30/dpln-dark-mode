@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      15.1
+// @version      15.3
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -24,7 +24,6 @@
             --border-color: #33343d;
         }
 
-        /* === NUCLEAR: écraser TOUT fond clair === */
         body.dpln-dark,
         body.dpln-dark.wsite-background,
         body.dpln-dark.wsite-background.wsite-custom-background,
@@ -56,7 +55,6 @@
             background: var(--bg-main) none !important;
         }
 
-        /* === TEXTE: forcer partout === */
         body.dpln-dark,
         body.dpln-dark *:not(a) {
             color: var(--text-main) !important;
@@ -75,7 +73,6 @@
             color: inherit !important;
         }
 
-        /* === LIENS === */
         body.dpln-dark a,
         body.dpln-dark .wsite-not-footer h2.wsite-content-title a,
         body.dpln-dark .wsite-not-footer .paragraph a,
@@ -98,7 +95,6 @@
             color: #f09070 !important;
         }
 
-        /* === COORDS CLIQUABLES === */
         body.dpln-dark .fast-travel-coord {
             color: #5bbce0 !important;
             cursor: pointer;
@@ -107,7 +103,6 @@
             color: #8ad4f0 !important;
         }
 
-        /* === FONT COLOR (pages quêtes) === */
         body.dpln-dark font[color="#ff0000"],
         body.dpln-dark font[color="#f00"],
         body.dpln-dark font[color="#fd0000"] {
@@ -130,7 +125,6 @@
             color: #a0a0a0 !important;
         }
 
-        /* === NAV === */
         body.dpln-dark #nav-wrap {
             background: var(--bg-sec) none !important;
             border-bottom: 1px solid var(--border-color) !important;
@@ -153,30 +147,26 @@
             color: var(--text-accent) !important;
         }
 
-        /* === NAV SOUS-MENUS === */
         body.dpln-dark .wsite-menu-wrap {
             background: var(--bg-sec) none !important;
             border: 1px solid var(--border-color) !important;
         }
-        body.dpln-dark .wsite-menu-wrap .wsite-menu {
-            background: var(--bg-sec) none !important;
-        }
-        body.dpln-dark .wsite-menu-wrap .wsite-menu li {
+        body.dpln-dark .wsite-menu-wrap .wsite-menu,
+        body.dpln-dark .wsite-menu-wrap .wsite-menu li,
+        body.dpln-dark .wsite-menu-wrap .wsite-menu a {
             background: var(--bg-sec) none !important;
         }
         body.dpln-dark .wsite-menu-wrap .wsite-menu a {
             color: var(--text-main) !important;
-            background: var(--bg-sec) none !important;
         }
-        body.dpln-dark .wsite-menu-wrap .wsite-menu li:hover {
+        body.dpln-dark .wsite-menu-wrap .wsite-menu li:hover,
+        body.dpln-dark .wsite-menu-wrap .wsite-menu a:hover {
             background: #353640 none !important;
         }
         body.dpln-dark .wsite-menu-wrap .wsite-menu a:hover {
             color: #fff !important;
-            background: #353640 none !important;
         }
 
-        /* === GRILLE DONJONS === */
         body.dpln-dark .dungeon-article {
             background: var(--bg-ter) none !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
@@ -192,54 +182,45 @@
             color: inherit !important;
         }
 
-        /* === BLOG SIDEBAR === */
         body.dpln-dark .blog-sidebar {
             background: var(--bg-sec) none !important;
             border-color: var(--border-color) !important;
         }
 
-        /* === PRODUCT BLOCKS === */
         body.dpln-dark .product-block {
             background: var(--bg-ter) none !important;
             border: 1px solid var(--border-color) !important;
         }
 
-        /* === IMAGES === */
         body.dpln-dark img {
             filter: brightness(0.85);
-            transition: filter 0.3s ease;
         }
-        body.dpln-dark img:hover { filter: brightness(1.0); }
+        body.dpln-dark img:hover { filter: none; }
         body.dpln-dark .dungeon-article img,
         body.dpln-dark #jssor_1 img {
             filter: brightness(0.9) !important;
-            border-radius: 0 !important;
         }
 
-        /* === PUBS === */
         body.dpln-dark .akcelo-wrapper,
         body.dpln-dark .promo,
         body.dpln-dark .promobis,
         body.dpln-dark .promo3,
         body.dpln-dark .promo4 { display: none !important; }
 
-        /* === FOOTER === */
         body.dpln-dark #footer-wrap {
             background: var(--bg-sec) none !important;
             border-top: 1px solid var(--border-color) !important;
         }
 
-        /* === SCROLL TO TOP === */
         body.dpln-dark .scrollToTop {
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
         }
         body.dpln-dark .scrollToTop img {
-            filter: brightness(3) invert(0) !important;
+            filter: brightness(3) !important;
         }
 
-        /* === TOGGLE BUTTON === */
         #dpln-theme-toggle {
             position: fixed !important;
             top: 90px !important;
@@ -259,7 +240,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
             backdrop-filter: blur(5px) !important;
             color: #333 !important;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
         }
         body.dpln-dark #dpln-theme-toggle {
             background: rgba(36, 37, 43, 0.9) !important;
