@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      16.1
+// @version      16.2
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -290,7 +290,9 @@
             const max = Math.max(r, g, b);
             const min = Math.min(r, g, b);
             const l = (max + min) / 2 / 255;
-            if (l < 0.45) {
+            if (l < 0.08) {
+                r = 200; g = 200; b = 200;
+            } else if (l < 0.45) {
                 const boost = 0.65 / Math.max(l, 0.01);
                 r = Math.min(255, Math.round(r * boost));
                 g = Math.min(255, Math.round(g * boost));
