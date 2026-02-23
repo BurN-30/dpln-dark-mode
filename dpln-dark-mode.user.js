@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      13.0
+// @version      14.0
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
 // @icon         https://www.dofuspourlesnoobs.com/favicon.ico
-// @updateURL    https://github.com/BurN-30/dpln-dark-mode/raw/main/dpln-dark-mode.user.js
-// @downloadURL  https://github.com/BurN-30/dpln-dark-mode/raw/main/dpln-dark-mode.user.js
+// @updateURL    https://gist.githubusercontent.com/BurN-30/b1d9272c3183299bdae24336506c8f71/raw/dpln-dark-mode.user.js
+// @downloadURL  https://gist.githubusercontent.com/BurN-30/b1d9272c3183299bdae24336506c8f71/raw/dpln-dark-mode.user.js
 // @grant        GM_addStyle
 // ==/UserScript==
 
@@ -38,7 +38,9 @@
             background-image: none !important;
         }
 
-        body.dpln-dark #header-wrap,
+        body.dpln-dark #header-wrap {
+            background: var(--bg-sec) none !important;
+        }
         body.dpln-dark #nav-wrap,
         body.dpln-dark #wsite-page-wrapper,
         body.dpln-dark #wsite-content,
@@ -64,17 +66,25 @@
         }
 
         /* === LIENS === */
-        body.dpln-dark a {
+        body.dpln-dark a,
+        body.dpln-dark .wsite-not-footer h2.wsite-content-title a,
+        body.dpln-dark .wsite-not-footer .paragraph a,
+        body.dpln-dark .wsite-not-footer blockquote a,
+        body.dpln-dark #blogTable .blog-sidebar a,
+        body.dpln-dark #blogTable .blog-comments a,
+        body.dpln-dark .wsite-footer .paragraph a,
+        body.dpln-dark .wsite-not-footer .wsite-multicol a {
             color: var(--text-accent) !important;
             transition: color 0.2s ease;
         }
         body.dpln-dark a:hover,
-        body.dpln-dark .wsite-not-footer .paragraph a:hover,
         body.dpln-dark .wsite-not-footer h2.wsite-content-title a:hover,
-        body.dpln-dark .wsite-not-footer .wsite-multicol a:hover,
+        body.dpln-dark .wsite-not-footer .paragraph a:hover,
+        body.dpln-dark .wsite-not-footer blockquote a:hover,
         body.dpln-dark #blogTable .blog-sidebar a:hover,
+        body.dpln-dark #blogTable .blog-comments a:hover,
         body.dpln-dark .wsite-footer .paragraph a:hover,
-        body.dpln-dark .wsite-not-footer a:hover {
+        body.dpln-dark .wsite-not-footer .wsite-multicol a:hover {
             color: #f09070 !important;
         }
 
