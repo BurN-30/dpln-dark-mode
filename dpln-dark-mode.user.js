@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      12.0
+// @version      13.0
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -68,8 +68,37 @@
             color: var(--text-accent) !important;
             transition: color 0.2s ease;
         }
-        body.dpln-dark a:hover {
+        body.dpln-dark a:hover,
+        body.dpln-dark .wsite-not-footer .paragraph a:hover,
+        body.dpln-dark .wsite-not-footer h2.wsite-content-title a:hover,
+        body.dpln-dark .wsite-not-footer .wsite-multicol a:hover,
+        body.dpln-dark #blogTable .blog-sidebar a:hover,
+        body.dpln-dark .wsite-footer .paragraph a:hover,
+        body.dpln-dark .wsite-not-footer a:hover {
             color: #f09070 !important;
+        }
+
+        /* === FONT COLOR (pages quêtes) === */
+        body.dpln-dark font[color="#ff0000"],
+        body.dpln-dark font[color="#f00"],
+        body.dpln-dark font[color="#fd0000"] {
+            color: #ff6b6b !important;
+        }
+        body.dpln-dark font[color="#3a96b8"],
+        body.dpln-dark font[color="#3387a2"] {
+            color: #5bbce0 !important;
+        }
+        body.dpln-dark font[color="#5fa233"] {
+            color: #7cc956 !important;
+        }
+        body.dpln-dark font[color="#5848b7"] {
+            color: #8a7ef0 !important;
+        }
+        body.dpln-dark font[color="#a85f2e"] {
+            color: #d4894e !important;
+        }
+        body.dpln-dark font[color="#3f3f3f"] {
+            color: #a0a0a0 !important;
         }
 
         /* === NAV === */
