@@ -23,12 +23,12 @@ Deux méthodes au choix :
 
 L'extension injecte le CSS avant le rendu de la page, ce qui élimine le flash blanc lors du chargement.
 
-1. **[Télécharger le .zip](https://github.com/BurN-30/dpln-dark-mode/releases/latest/download/dpln-dark-mode-extension.zip)**
-2. Dézipper le dossier
+1. **[Télécharger l'extension empaquetée (.zip)](https://github.com/BurN-30/dpln-dark-mode/releases/latest/download/dpln-dark-mode-extension.zip)**
+2. **Clic droit** sur le .zip > **"Extraire tout"** (Windows le fait nativement, aucun logiciel requis)
 3. Ouvrir `chrome://extensions/` dans Chrome
 4. Activer le **Mode développeur** (en haut à droite)
 5. Cliquer sur **"Charger l'extension non empaquetée"**
-6. Sélectionner le dossier dézippé
+6. Sélectionner le dossier extrait
 
 > Fonctionne aussi sur les navigateurs basés sur Chromium (Edge, Brave, Opera...).
 
