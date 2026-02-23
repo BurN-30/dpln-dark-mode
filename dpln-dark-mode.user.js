@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dofus pour les Noobs - Dark Mode
 // @namespace    http://tampermonkey.net/
-// @version      11.0
+// @version      12.0
 // @description  Thème sombre complet pour DPLN avec bouton toggle.
 // @author       BurN-30
 // @match        *://www.dofuspourlesnoobs.com/*
@@ -24,52 +24,35 @@
             --border-color: #33343d;
         }
 
-        /* === RESET GLOBAL : tout passe en sombre === */
+        /* === NUCLEAR: écraser TOUT fond clair === */
         body.dpln-dark,
-        body.dpln-dark.wsite-background {
-            background: var(--bg-main) !important;
-            background-image: none !important;
+        body.dpln-dark.wsite-background,
+        body.dpln-dark.wsite-background.wsite-custom-background,
+        body.dpln-dark.wsite-theme-light {
+            background: var(--bg-main) none !important;
             color: var(--text-main) !important;
         }
 
-        body.dpln-dark > div,
-        body.dpln-dark #main-wrap,
+        body.dpln-dark *:not(#dpln-theme-toggle):not(#dpln-theme-toggle *):not(img):not(svg):not(path):not(iframe):not(video) {
+            background-color: transparent !important;
+            background-image: none !important;
+        }
+
+        body.dpln-dark #header-wrap,
+        body.dpln-dark #nav-wrap,
         body.dpln-dark #wsite-page-wrapper,
         body.dpln-dark #wsite-content,
+        body.dpln-dark #main-wrap,
         body.dpln-dark .wsite-background,
-        body.dpln-dark .wsite-custom-background,
-        body.dpln-dark .wsite-not-footer,
-        body.dpln-dark .wsite-elements,
-        body.dpln-dark .wsite-section-wrap,
-        body.dpln-dark .wsite-section-elements,
-        body.dpln-dark .wsite-header-section,
-        body.dpln-dark .banner-wrap,
-        body.dpln-dark .container,
-        body.dpln-dark table,
-        body.dpln-dark tbody,
-        body.dpln-dark tr,
-        body.dpln-dark td {
-            background-color: var(--bg-main) !important;
-            background-image: none !important;
+        body.dpln-dark .wsite-custom-background {
+            background: var(--bg-main) none !important;
         }
 
-        /* === TEXTE : forcer la couleur partout === */
+        /* === TEXTE: forcer partout === */
         body.dpln-dark,
-        body.dpln-dark p,
-        body.dpln-dark li,
-        body.dpln-dark span,
-        body.dpln-dark td,
-        body.dpln-dark th,
-        body.dpln-dark div,
-        body.dpln-dark label,
-        body.dpln-dark ul,
-        body.dpln-dark ol,
-        body.dpln-dark .paragraph,
-        body.dpln-dark .wsite-text,
-        body.dpln-dark font {
+        body.dpln-dark *:not(a):not(#dpln-theme-toggle) {
             color: var(--text-main) !important;
         }
-
         body.dpln-dark h1,
         body.dpln-dark h2,
         body.dpln-dark h3,
@@ -89,106 +72,91 @@
             color: #f09070 !important;
         }
 
-        /* === HEADER : transparent, pas de fond plein === */
-        body.dpln-dark #header-wrap,
-        body.dpln-dark .wsite-header-elements {
-            background: transparent !important;
-            background-image: none !important;
-        }
-
         /* === NAV === */
         body.dpln-dark #nav-wrap {
-            background-color: var(--bg-sec) !important;
+            background: var(--bg-sec) none !important;
             border-bottom: 1px solid var(--border-color) !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        body.dpln-dark .wsite-menu-default a,
-        body.dpln-dark .wsite-menu-item {
+        body.dpln-dark #nav-wrap .container,
+        body.dpln-dark #nav-wrap table,
+        body.dpln-dark #nav-wrap td {
+            background: var(--bg-sec) none !important;
+        }
+        body.dpln-dark .wsite-menu-default a {
             color: var(--text-main) !important;
             transition: color 0.2s ease;
         }
-        body.dpln-dark .wsite-menu-default a:hover,
-        body.dpln-dark .wsite-menu-item:hover {
+        body.dpln-dark .wsite-menu-default a:hover {
             color: #fff !important;
+        }
+        body.dpln-dark li#active > a,
+        body.dpln-dark li#active .wsite-menu-item {
+            color: var(--text-accent) !important;
         }
 
         /* === NAV SOUS-MENUS === */
-        body.dpln-dark .wsite-menu-wrap,
-        body.dpln-dark .wsite-menu {
-            background-color: var(--bg-sec) !important;
+        body.dpln-dark .wsite-menu-wrap {
+            background: var(--bg-sec) none !important;
             border: 1px solid var(--border-color) !important;
         }
-        body.dpln-dark .wsite-menu li,
-        body.dpln-dark .wsite-menu a,
-        body.dpln-dark .wsite-menu-subitem a {
-            color: var(--text-main) !important;
-            background: var(--bg-sec) !important;
+        body.dpln-dark .wsite-menu-wrap .wsite-menu {
+            background: var(--bg-sec) none !important;
         }
-        body.dpln-dark .wsite-menu li:hover > a,
-        body.dpln-dark .wsite-menu-subitem a:hover {
-            background: #353640 !important;
+        body.dpln-dark .wsite-menu-wrap .wsite-menu li {
+            background: var(--bg-sec) none !important;
+        }
+        body.dpln-dark .wsite-menu-wrap .wsite-menu a {
+            color: var(--text-main) !important;
+            background: var(--bg-sec) none !important;
+        }
+        body.dpln-dark .wsite-menu-wrap .wsite-menu li:hover {
+            background: #353640 none !important;
+        }
+        body.dpln-dark .wsite-menu-wrap .wsite-menu a:hover {
             color: #fff !important;
+            background: #353640 none !important;
         }
 
-        /* === MULTICOL === */
-        body.dpln-dark .wsite-multicol,
-        body.dpln-dark .wsite-multicol-table-wrap,
-        body.dpln-dark .wsite-multicol-col {
-            background-color: transparent !important;
-            border-color: var(--border-color) !important;
+        /* === GRILLE DONJONS === */
+        body.dpln-dark .dungeon-article {
+            background: var(--bg-ter) none !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+        body.dpln-dark .dungeon-article:hover {
+            box-shadow: 0 8px 22px rgba(0,0,0,0.5) !important;
+        }
+        body.dpln-dark .dj-article-tt {
+            color: var(--text-main) !important;
+        }
+        body.dpln-dark .dungeon-related a {
+            color: inherit !important;
         }
 
-        /* === SIDEBAR BLOG === */
+        /* === BLOG SIDEBAR === */
         body.dpln-dark .blog-sidebar {
-            background-color: var(--bg-sec) !important;
-            color: var(--text-main) !important;
+            background: var(--bg-sec) none !important;
             border-color: var(--border-color) !important;
-        }
-        body.dpln-dark .blog-header,
-        body.dpln-dark .blog-social,
-        body.dpln-dark .blog-comments,
-        body.dpln-dark #commentArea {
-            background-color: transparent !important;
-            color: var(--text-main) !important;
         }
 
         /* === PRODUCT BLOCKS === */
         body.dpln-dark .product-block {
-            background-color: var(--bg-ter) !important;
-            border-color: var(--border-color) !important;
-        }
-        body.dpln-dark .product-title {
-            color: #f4f4f5 !important;
-        }
-
-        /* === CUSTOM HTML BLOCKS === */
-        body.dpln-dark .wcustomhtml {
-            color: var(--text-main) !important;
-        }
-
-        /* === GRILLE DONJONS === */
-        body.dpln-dark .dungeon-article,
-        body.dpln-dark [class*="dungeon"] {
-            background: var(--bg-ter) !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-        }
-        body.dpln-dark .dungeon-article:hover,
-        body.dpln-dark [class*="dungeon"]:hover {
-            box-shadow: 0 8px 22px rgba(0,0,0,0.5) !important;
-            color: var(--text-main) !important;
-        }
-        body.dpln-dark .dj-article-tt,
-        body.dpln-dark [class*="article-tt"] {
-            color: var(--text-main) !important;
+            background: var(--bg-ter) none !important;
+            border: 1px solid var(--border-color) !important;
         }
 
         /* === IMAGES === */
         body.dpln-dark img {
             filter: brightness(0.85);
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: filter 0.3s ease;
         }
         body.dpln-dark img:hover { filter: brightness(1.0); }
+        body.dpln-dark .dungeon-article img,
+        body.dpln-dark #jssor_1 img {
+            filter: brightness(0.9) !important;
+            border-radius: 0 !important;
+        }
 
         /* === PUBS === */
         body.dpln-dark .akcelo-wrapper,
@@ -198,21 +166,19 @@
         body.dpln-dark .promo4 { display: none !important; }
 
         /* === FOOTER === */
-        body.dpln-dark #footer-wrap,
-        body.dpln-dark .wsite-footer {
-            background-color: var(--bg-sec) !important;
+        body.dpln-dark #footer-wrap {
+            background: var(--bg-sec) none !important;
             border-top: 1px solid var(--border-color) !important;
         }
 
-        /* === SCROLL TO TOP : pas de cadre === */
+        /* === SCROLL TO TOP === */
         body.dpln-dark .scrollToTop {
-            background: transparent !important;
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
         }
         body.dpln-dark .scrollToTop img {
-            filter: brightness(2) !important;
+            filter: brightness(3) invert(0) !important;
         }
 
         /* === TOGGLE BUTTON === */
@@ -238,7 +204,7 @@
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
         }
         body.dpln-dark #dpln-theme-toggle {
-            background: rgba(36, 37, 43, 0.8) !important;
+            background: rgba(36, 37, 43, 0.9) !important;
             border-color: rgba(255, 255, 255, 0.1) !important;
             color: #d1cdc7 !important;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4) !important;
@@ -249,8 +215,6 @@
             height: 22px !important;
             fill: currentColor !important;
             display: block !important;
-            margin: 0 !important;
-            padding: 0 !important;
         }
     `;
     GM_addStyle(css);
