@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "DPLN Dark Mode",
+    "version": "1.0",
+    "description": "Thème sombre pour Dofus pour les Noobs.",
+    "author": "BurN-30",
+    "icons": {
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://www.dofuspourlesnoobs.com/*"],
+            "css": ["css/dark-mode.css"],
+            "js": ["js/content.js"],
+            "run_at": "document_start"
+        }
+    ]
+}
